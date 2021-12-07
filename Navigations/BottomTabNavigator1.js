@@ -1,18 +1,13 @@
 import React, { useContext } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import { Badge } from 'react-native-elements';
-
 import HomeScreen from '../Screens/HomeScreen';
 import Wishlist from '../Screens/Wishlist';
 import Carrito from '../Screens/Carrito';
-
 import { LibreriaContext } from '../Context/LibreriaContext';
-
 const Tab = createBottomTabNavigator();
-
 export default function BottomTabNavigator1(){
   const { cantidades, contando, ver } = useContext(LibreriaContext);
   return(
@@ -44,13 +39,13 @@ export default function BottomTabNavigator1(){
     />
 
     <Tab.Screen
-      name = "Whishlist"
+      name = "Wishlist"
       component={Wishlist}
       options={{
           tabBarLabel:"Wishlist",
-          tabBarIcon:({color})=>(
+          tabBarIcon:({red})=>(
           <View>
-          <Ionicons name={"heart-circle-outline"} size={25} color={color}/>
+          <Ionicons name={"heart-circle-outline"} size={25} color={red}/>
             <Badge 
               status="error"
               value={contando}

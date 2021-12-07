@@ -5,7 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { LibreriaContext } from '../Context/LibreriaContext';
 export default function HomeScreen() {
-  const { catalogo, agregarWishList, eliminarWishList, agregarCarro } = useContext(LibreriaContext);
+const { catalogo, agregarWishList, eliminarWishList, agregarCarro } = useContext(LibreriaContext);
 
   return (
     <View>
@@ -13,19 +13,19 @@ export default function HomeScreen() {
         {catalogo.map((a, i) => (
           <Card>
             <Card.Title>{a.titulo}</Card.Title>
-            <Text key={i}>Precio = ${a.precio} </Text>
-            <Text key={i + 10}>Idioma = {a.idioma}</Text>
+            <Text>Precio = ${a.precio} </Text>
+            <Text>Idioma = {a.idioma}</Text>
             <View style={styles.container}>
               <TouchableHighlight onPress={()=>agregarCarro(a)}>
-                <Ionicons name={'cart-outline'} size={22} color={'green'} />
+                <Ionicons name={'cart-outline'} size={40} color={'green'} />
               </TouchableHighlight>
               {a.desactivado === false ? (
                 <TouchableHighlight onPress={() => agregarWishList(a)}>
-                  <Ionicons name={'heart-outline'} size={22} color={'red'} />
+                  <Ionicons name={'heart-outline'} size={40} color={'red'} />
                 </TouchableHighlight>
               ) : (
                 <TouchableHighlight onPress={() => eliminarWishList(a)}>
-                  <Ionicons name={'heart-dislike-outline'} size={22} color={'red'} />
+                  <Ionicons name={'heart-dislike-outline'} size={40} color={'red'} />
                 </TouchableHighlight>
               )}
             </View>
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-around',
     padding: 24,
     flexDirection: 'row',
   },

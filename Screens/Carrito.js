@@ -18,31 +18,31 @@ export default function Wishlist() {
               style={styles.logo}
               source={require('../Imagenes/Emptycarrito.png')}
             />
-            <Text style={styles.paragraph}>No hay nada en tu carrito</Text>
+            <Text style={styles.paragraph}>Contenido del carrito vacio</Text>
           </View>
         :
           <ScrollView>
           <View>
-            <Text style={styles.paragraph}>Total: $ {total}</Text>
+            <Text style={styles.paragraph}>Total: ${total}</Text>
             <View style={styles.container2}>
-            <FontAwesome.Button name="paypal" backgroundColor="#3b7bbf" onPress={()=>comprarCarrito()}>
-              Pagar con Paypal
+            <FontAwesome.Button name="money" backgroundColor="#3b7bbf" onPress={()=>comprarCarrito()}>
+              Pagar
             </FontAwesome.Button>
-            <Text style={styles.paragraph}>____________________</Text>
+            <Text style={styles.paragraph}></Text>
             <FontAwesome.Button name="remove" backgroundColor="#c33d3c" onPress={()=>eliminarCarrito()}>
-              Eliminar contenido del carrito
+              Eliminar Contenido
             </FontAwesome.Button>
           </View>
         </View>
           {
-            carrito.map((a,i)=>
+            carrito.map((x)=>
             <Card>
-            <Card.Title>{a.titulo}</Card.Title>
-            <Text key={i}>Cantidad = {a.cantidad} </Text>
-            <Text key={i}>Precio = $ {a.precio} c/u </Text>
-            <Text key={i}>Importe = $ {a.importe}  </Text>
+            <Card.Title>{x.titulo}</Card.Title>
+            <Text>Cantidad = {x.cantidad} </Text>
+            <Text>Precio = $ {x.precio} c/u </Text>
+            <Text>Importe = $ {x.importe}  </Text>
             <View style={styles.container}>
-              <TouchableHighlight onPress={() => eliminarCarro(a)}>
+              <TouchableHighlight onPress={() => eliminarCarro(x)}>
                 <Ionicons name={'remove-circle'} size={22} color={'red'} />
               </TouchableHighlight>
             </View>
@@ -58,13 +58,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-end',
     padding: 24,
     flexDirection: 'row',
   },
   container2: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   paragraph: {

@@ -1,12 +1,9 @@
 import React, { useContext } from 'react';
 import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
-
 import { ScrollView } from 'react-native-gesture-handler';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import { LibreriaContext } from '../Context/LibreriaContext';
-
 export default function Wishlist() {
   const { wishList, eliminarWishList, agregarCarro } = useContext(LibreriaContext);
 
@@ -17,16 +14,16 @@ export default function Wishlist() {
           <View>
             <Image
               style={styles.logo}
-              source={require('../Imagenes/EmptyWishlist.png')}
+              source={require('../Imagenes/EmptyWishList.png')}
             />
-            <Text style={styles.paragraph}>No hay nada en tu Wishlist</Text>
+            <Text style={styles.paragraph}>WishList vacia</Text>
           </View>
         ) : (
             wishList.map((a,i)=>
             <Card>
             <Card.Title>{a.titulo}</Card.Title>
-            <Text key={i}>Precio = ${a.precio} </Text>
-            <Text key={i + 10}>Idioma = {a.idioma}</Text>
+            <Text>Precio = ${a.precio} </Text>
+            <Text>Idioma = {a.idioma}</Text>
             <View style={styles.container}>
               <TouchableHighlight onPress={()=>agregarCarro(a)}>
                 <Ionicons name={'cart-outline'} size={22} color={'green'} />
